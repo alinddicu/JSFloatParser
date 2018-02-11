@@ -4,20 +4,19 @@
 <script>
 function convert()
 {
+	// assuming the text has some decimals
+	// number formats : https://www.thefinancials.com/Default.aspx?SubSectionID=curformat	
 	var text = document.getElementById("toConvert").value;
 	var separatorIndex = Math.max(text.lastIndexOf(','), text.lastIndexOf('.'));
 	
 	var integerPart = text.substring(0, separatorIndex).replace(/\./g, "").replace(/\,/g, "").replace(/\s/g, "").replace(/\'/g, "");
-	console.log("integerPart: " + integerPart);
 	var decimalPart = text.substring(separatorIndex + 1, text.length);
-	console.log("decimalPart: " + decimalPart);
 	
 	document.getElementById("result").innerHTML = parseFloat(integerPart + "." + decimalPart);
 }
 </script>
 </head>
 <body>
-
   To convert:<input type="text" id="toConvert" value="0.0"><input type="submit" value="Convert" onclick="convert()">
   <br/>
   <br/>
